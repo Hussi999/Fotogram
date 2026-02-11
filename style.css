@@ -10,12 +10,88 @@ body {
     font-family: "Raleway", sans-serif;
     display: flex;
     flex-direction: column;
+    align-items: center;
     min-height: 100vh;
+    background-color: #15242a;
 
 }
 
 p {
     margin: 0px;
+}
+
+section {
+    align-items: center;
+
+}
+
+.main-wrap {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 1920px;
+    padding-bottom: 40px;
+    padding-top: 40px;
+}
+
+
+
+
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #172c33;
+    gap: 10px;
+    width: 100%;
+    height: 100px;
+}
+
+.header-wrap {
+    width: 100%;
+    max-width: 1924px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-bottom: 24px;
+    padding-top: 24px;
+
+}
+
+header img {
+    width: 60px;
+    margin-left: 20px;
+}
+
+header h1 {
+    color: white;
+    font-size: 48px;
+    margin: 0px;
+}
+
+
+
+
+
+main {
+    height: 100%;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+main h2 {
+    color: white;
+    font-size: 48px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-bottom: 40px;
+    display: flex;
+    justify-content: center;
 }
 
 .divNextButton {
@@ -37,14 +113,15 @@ p {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 14px;
-    margin: 0 20px;
+    gap: 25px;
+    padding-left: 20px;
+    padding-right: 20px;
 
 }
 
 #imgContent img {
     width: 200px;
-    height: auto;
+    height: 150px;
     border-radius: 8px;
     object-fit: fill;
     transition: transform 1s;
@@ -132,40 +209,16 @@ p {
 
 
 
-
-
-
-.page-wrap {
-    flex: 1;
+footer {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-}
-
-section {
     justify-content: center;
-    align-items: center;
+    background-color: #172c33;
+    width: 100%;
 }
 
-.header-wrap {
-    width: 100%;
-    max-width: 1924px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
+footer img {
+    width: 48px;
 
-}
-
-.main-warp {
-    background-color: #15242a;
-    width: 100%;
-    height: 100%;
-    justify-content: center;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    padding: 50px 0;
 }
 
 .footer-wrap {
@@ -175,56 +228,8 @@ section {
     align-items: center;
     flex-direction: column;
     gap: 10px;
-
-}
-
-
-
-.fotogram-header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #172c33;
-    gap: 10px;
-    width: 100%;
-    height: 100px;
-}
-
-.fotogram-header img {
-    width: 60px;
-    margin-left: 20px;
-}
-
-.fotogram-header h1 {
-    color: white;
-    font-size: 48px;
-    margin: 0px;
-}
-
-.main-warp h2 {
-    color: white;
-    font-size: 48px;
-    margin-top: 0px;
-    display: flex;
-    justify-content: center;
-}
-
-
-
-
-
-
-
-.fotogram-footer {
-    display: flex;
-    align-items: center;
-    background-color: #172c33;
-    padding: 24px;
-}
-
-.fotogram-footer img {
-    width: 48px;
-
+    padding-bottom: 24px;
+    padding-top: 24px;
 }
 
 .legal {
@@ -259,15 +264,15 @@ a:focus {
 
 @media (max-width: 1050px) {
 
-    .main-warp h2 {
+    main h2 {
         font-size: 40px;
     }
 
-    .fotogram-header h1 {
+    header h1 {
         font-size: 40px;
     }
 
-    .fotogram-header img {
+    header img {
         width: 40px;
     }
 
@@ -275,7 +280,7 @@ a:focus {
         width: 170px;
     }
 
-    .fotogram-footer img {
+    footer img {
         width: 40px;
     }
 }
@@ -286,11 +291,11 @@ a:focus {
         justify-content: center;
     }
 
-    .fotogram-header h1 {
+    header h1 {
         font-size: 30px;
     }
 
-    .main-warp h2 {
+    main h2 {
         font-size: 30px;
     }
 
@@ -316,16 +321,16 @@ a:focus {
 @media (max-width: 450px) {
 
 
-    .fotogram-header h1 {
+    header h1 {
         font-size: 20px;
     }
 
-    .main-warp h2 {
+    main h2 {
         font-size: 20px;
     }
 
     #modalImg {
-        width: 300px;
+        width: 290px;
         height: 450px;
     }
 
