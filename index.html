@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fotogram</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="shortcut icon" href="./favicon/favicon.png">
+</head>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+    rel="stylesheet">
+
+
+<body onload="render()">
+    <div class="page-wrap">
+
+        <header class="fotogram-header">
+            <div class="header-wrap">
+
+                <img src="./favicon/favicon.svg" alt="Website logo">
+                <h1>Fotogram</h1>
+
+            </div>
+        </header>
+
+        <main id="main" class="main-warp">
+            <section class="gallery-section" aria-label="Your personal photo album">
+
+                <h2 aria-label="Titel">Your Personal Photo Album</h2>
+                <div id="imgContent"></div>
+
+                <div id="popUp" role="dialog" aria-modal="true" aria-labelledby="modalText" aria-describedby="modalImg"
+                    hidden>
+                    <div class="backdrop"></div>
+                    <div class="content">
+                        <button id="closePopUp" role="button" aria-label="Close popup">×</button>
+
+                        <div class="divNextButton" role="group" aria-label="Image navigation">
+                            <button id="prevBtn" role="button" aria-label="show previous picture"><img
+                                    class="nextButtom" src="img/left-arrow.png" alt="Previous image"></button>
+                            <button id="nextBtn" role="button" aria-label="show next picture"><img class="nextButtom"
+                                    src="img/right-arrow.png" alt="Next image"></button>
+                        </div>
+                        <p id="modalText"></p>
+                        <img id="modalImg" alt="Large view of selected photo">
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <footer class="fotogram-footer">
+        <div class="footer-wrap">
+
+            <img src="./favicon/favicon.svg" alt="Fotogram logo">
+
+            <div class="legal">
+                <a href="#" aria-label="Impressum">Impressum</a>
+                <span>|</span>
+                <a href="#" aria-label="Datenschutz">Datenschutz</a>
+            </div>
+        </div>
+    </footer>
+
+
+
+
+    <script src="./script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,342 @@
+html,
+body {
+    height: 100%;
+    margin: 0;
+
+}
+
+
+body {
+    font-family: "Raleway", sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+
+}
+
+p {
+    margin: 0px;
+}
+
+.divNextButton {
+    display: flex;
+    justify-content: center;
+    gap: 22px;
+}
+
+.nextButtom {
+    width: 30px;
+
+}
+
+.nextButtom:hover {
+    cursor: pointer;
+}
+
+#imgContent {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px;
+    margin: 0 20px;
+
+}
+
+#imgContent img {
+    width: 200px;
+    height: auto;
+    border-radius: 8px;
+    object-fit: fill;
+    transition: transform 1s;
+}
+
+
+
+#modalText {
+    color: white;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+#imgContent img:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+    border: 2px solid;
+    border-color: white;
+}
+
+#popUp {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+}
+
+#popUp.open {
+    display: block;
+}
+
+#popUp .backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+}
+
+#popUp .content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: min(900px, 92vw);
+    max-height: 85vh;
+    padding-bottom: 30px;
+    padding-top: 70px;
+    padding-left: 50px;
+    padding-right: 50px;
+    border-radius: 12px;
+    background: #172c33;
+    display: flex;
+    flex-direction: column-reverse;
+    text-align: center;
+    gap: 10px;
+    border: 2px solid;
+    border-color: darkgray;
+    forced-color-adjust: none;
+    color: white;
+    background-color: #172c33;
+}
+
+#modalImg {
+    display: block;
+    width: 600px;
+    height: 450px;
+    border-radius: 10px;
+    object-fit: cover;
+
+}
+
+#closePopUp {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+.page-wrap {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+section {
+    justify-content: center;
+    align-items: center;
+}
+
+.header-wrap {
+    width: 100%;
+    max-width: 1924px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+}
+
+.main-warp {
+    background-color: #15242a;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 50px 0;
+}
+
+.footer-wrap {
+    width: 100%;
+    max-width: 1924px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+
+}
+
+
+
+.fotogram-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #172c33;
+    gap: 10px;
+    width: 100%;
+    height: 100px;
+}
+
+.fotogram-header img {
+    width: 60px;
+    margin-left: 20px;
+}
+
+.fotogram-header h1 {
+    color: white;
+    font-size: 48px;
+    margin: 0px;
+}
+
+.main-warp h2 {
+    color: white;
+    font-size: 48px;
+    margin-top: 0px;
+    display: flex;
+    justify-content: center;
+}
+
+
+
+
+
+
+
+.fotogram-footer {
+    display: flex;
+    align-items: center;
+    background-color: #172c33;
+    padding: 24px;
+}
+
+.fotogram-footer img {
+    width: 48px;
+
+}
+
+.legal {
+    gap: 10px;
+}
+
+.legal span {
+    color: #6e6e6e
+}
+
+
+.legal a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 18px;
+
+}
+
+.legal a:hover::after, .legal a:focus::after {
+        content: "✔️";
+}
+
+a:hover,
+a:focus {
+    text-decoration: underline;
+    color: #ffffff;
+    font-weight: 600;
+
+}
+
+@media (max-width: 1050px) {
+
+    .main-warp h2 {
+        font-size: 40px;
+    }
+
+    .fotogram-header h1 {
+        font-size: 40px;
+    }
+
+    .fotogram-header img {
+        width: 40px;
+    }
+
+    #imgContent img {
+        width: 170px;
+    }
+
+    .fotogram-footer img {
+        width: 40px;
+    }
+}
+
+@media (max-width: 750px) {
+
+    .header-wrap {
+        justify-content: center;
+    }
+
+    .fotogram-header h1 {
+        font-size: 30px;
+    }
+
+    .main-warp h2 {
+        font-size: 30px;
+    }
+
+    #modalImg {
+        width: 400px;
+        height: 500px;
+    }
+}
+
+@media (max-width: 550px) {
+
+    #modalImg {
+        width: 300px;
+        height: 450px;
+    }
+
+    #modalText {
+
+        font-size: 1.0rem;
+    }
+}
+
+@media (max-width: 450px) {
+
+
+    .fotogram-header h1 {
+        font-size: 20px;
+    }
+
+    .main-warp h2 {
+        font-size: 20px;
+    }
+
+    #modalImg {
+        width: 300px;
+        height: 450px;
+    }
+
+    #modalText {
+
+        font-size: 0.9rem;
+    }
+
+    #popUp .content {
+        background: #15242a00;
+        border-color: rgba(169, 169, 169, 0);
+    }
+
+    #closePopUp {
+        right: 40px;
+    }
+}
