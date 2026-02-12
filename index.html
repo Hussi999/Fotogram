@@ -17,7 +17,7 @@
     rel="stylesheet">
 
 
-<body onload="render()">
+<body onload="render(); setupGallery(); focusTrap(popUp); escapeWithKeyboard();">
 
 
     <header>
@@ -37,14 +37,14 @@
 
                 <div id="popUp" role="dialog" aria-modal="true" aria-labelledby="modalText" aria-describedby="modalImg"
                     hidden>
-                    <div class="backdrop"></div>
+                    <div onclick="closePopUp()" class="backdrop"></div>
                     <div class="content">
-                        <button id="closePopUp" role="button" aria-label="Close popup">×</button>
+                        <button onclick="closePopUp()" id="closePopUp" role="button" aria-label="Close popup">×</button>
 
                         <div class="divNextButton" role="group" aria-label="Image navigation">
-                            <button id="prevBtn" role="button" aria-label="show previous picture"><img
+                            <button onclick="changeImage(-1)" id="prevBtn" role="button" aria-label="show previous picture"><img
                                     class="nextButtom" src="img/left-arrow.png" alt="Previous image"></button>
-                            <button id="nextBtn" role="button" aria-label="show next picture"><img class="nextButtom"
+                            <button onclick="changeImage(1)" id="nextBtn" role="button" aria-label="show next picture"><img class="nextButtom"
                                     src="img/right-arrow.png" alt="Next image"></button>
                         </div>
                         <p id="modalText"></p>

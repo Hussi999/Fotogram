@@ -1,3 +1,6 @@
+
+/* Variablen Bilder und Text */
+
 let fotoImg = [
   'img/arctic-fox.jpg',
   'img/asia.jpg',
@@ -28,6 +31,8 @@ let textImg = [
   'Verschneiter Gipfel im Winter'
 ];
 
+/* Variablen für functionen PopUp allgemein */
+
 let images = [];
 let currentIndex = 0;
 
@@ -41,6 +46,7 @@ const backdrop = popUp.querySelector('.backdrop');
 
 
 
+/* Funktion zum aufrufen der Imgs aus java-script */
 
 function render() {
   let contentRef = document.getElementById('imgContent');
@@ -59,6 +65,7 @@ function getTemplate(i) {
 
 
 
+/* Popup Funktionen / close / open */
 
 function openPopUp(src, alt = '', text = '') {
   modalImg.src = src;
@@ -77,85 +84,83 @@ function closePopUp() {
   modalText.textContent = '';
 }
 
-popUp.addEventListener('keydown', (e) => {
-  if (e.key !== 'Tab') return;
-  const focusable = popUp.querySelectorAll(
-    'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
-  );
-  const first = focusable[0];
-  const last = focusable[focusable.length - 1];
-  if (e.shiftKey && document.activeElement === first) {
-    e.preventDefault();
-    last.focus();
-  }
-  else if (!e.shiftKey && document.activeElement === last) {
-    e.preventDefault();
-    first.focus();
-  }
-});
 
 
 
+/* Funktionen zum öffnen des Images und übergabe des Imgs und Textes */
 
-
-imgContent.addEventListener('click', (e) => {
-  const img = e.target.closest('img');
+  function openImage(event) {
+  const img = event.target.closest('img');
   if (!img) return;
   images = Array.from(document.querySelectorAll('#imgContent img'));
   currentIndex = images.indexOf(img);
   const text = decodeURIComponent(img.dataset.text || '');
   openPopUp(img.src, img.alt || 'Image', text);
-});
-
-imgContent.addEventListener('keydown', (e) => {
-  if (e.key === 'Enter' || e.key === ' ') {
-    const img = e.target.closest('img');
-    if (!img) return;
-    images = Array.from(document.querySelectorAll('#imgContent img'));
-    currentIndex = images.indexOf(img);
-    const text = decodeURIComponent(img.dataset.text || '');
-    openPopUp(img.src, img.alt || 'Image', text);
-    e.preventDefault();
-  }
-});
-
-
-
-
-
-function nextImage() {
-  currentIndex = (currentIndex + 1) % images.length; 
-  const nextImg = images[currentIndex];
-  const text = decodeURIComponent(nextImg.dataset.text || '');
-  openPopUp(nextImg.src, nextImg.alt || 'Image', text);
+  event.preventDefault();
 }
 
-function prevImage() {
+function setupGallery() {
+  const imgContent = document.getElementById('imgContent');
+  imgContent.addEventListener('click', openImage);
+  imgContent.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter' || event.key === ' ') openImage(event);
+  });
+}
+
+
+
+
+/* Funktion zum ändern des Imgs in beiden Richtungen + dauerschleife der Imgs */
+
+function changeImage(direction = 1) {
   if (!images || images.length === 0) return;
-  currentIndex = (currentIndex - 1 + images.length) % images.length; 
-  const prevImg = images[currentIndex];
-  const text = decodeURIComponent(prevImg.dataset.text || '');
-  openPopUp(prevImg.src, prevImg.alt || 'Image', text);
+  currentIndex = (currentIndex + direction + images.length) % images.length;
+  const image = images[currentIndex];
+  const text = decodeURIComponent(image.dataset.text || '');
+  openPopUp(image.src, image.alt || 'Image', text);
 }
 
-document.getElementById('nextBtn').addEventListener('click', nextImage);
-document.getElementById('prevBtn').addEventListener('click', prevImage);
 
-closeBtn.addEventListener('click', closePopUp);
-backdrop.addEventListener('click', closePopUp);
 
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape' && popUp.classList.contains('open')) {
+
+/* Benützung mit Keyborad + FocusTrap*/
+
+function trapFocus(container, event) {
+    if (event.key !== 'Tab') return; 
+    const focusable = container.querySelectorAll (
+      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+    );
+    if (focusable.length === 0) return;
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+     event.preventDefault();
+     first.focus();
+    }
+  }
+  function focusTrap(element) {
+    element.addEventListener('keydown', (event) => trapFocus(element, event));
+
+  }
+
+
+
+function escapeWithKeyboard() {
+  document.addEventListener('keydown', escapeKey)
+}
+function escapeKey(event) {
+  if (event.key === 'Escape' && popUp.classList.contains('open')) {
     closePopUp();
   }
-});
+}
 
 
 
-
-
-document.addEventListener('keydown', (e) => {
-  if (e.key !== 'Tab') return;
+document.addEventListener('keydown', (event) => {
+  if (event.key !== 'Tab') return;
   const focusableElements = Array.from(
     document.querySelectorAll(
       'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
@@ -164,12 +169,12 @@ document.addEventListener('keydown', (e) => {
   if (focusableElements.length === 0) return;
   const first = focusableElements[0];
   const last = focusableElements[focusableElements.length - 1];
-  if (e.shiftKey && document.activeElement === first) {
-    e.preventDefault();
+  if (event.shiftKey && document.activeElement === first) {
+    event.preventDefault();
     last.focus();
   }
-  else if (!e.shiftKey && document.activeElement === last) {
-    e.preventDefault();
+  else if (!event.shiftKey && document.activeElement === last) {
+    event.preventDefault();
     first.focus();
   }
 });
