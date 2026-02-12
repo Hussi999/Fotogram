@@ -28,9 +28,22 @@ let textImg = [
   'Verschneiter Gipfel im Winter'
 ];
 
+let images = [];
+let currentIndex = 0;
+
+const imgContent = document.getElementById('imgContent');
+const popUp = document.getElementById('popUp');
+const modalImg = document.getElementById('modalImg');
+const modalText = document.getElementById('modalText');
+const closeBtn = document.getElementById('closePopUp');
+const backdrop = popUp.querySelector('.backdrop');
+
+
+
+
+
 function render() {
   let contentRef = document.getElementById('imgContent');
-
 
   contentRef.innerHTML = '';
 
@@ -43,19 +56,6 @@ function getTemplate(i) {
   return `<img src="${fotoImg[i]}" alt="Photo ${textImg[i]}" data-text=${encodeURIComponent(textImg[i])} tabindex="0" aria-label="${textImg[i]}"  role="button">`;
 }
 
-
-render();
-
-
-let images = [];
-let currentIndex = 0;
-
-const imgContent = document.getElementById('imgContent');
-const popUp = document.getElementById('popUp');
-const modalImg = document.getElementById('modalImg');
-const modalText = document.getElementById('modalText');
-const closeBtn = document.getElementById('closePopUp');
-const backdrop = popUp.querySelector('.backdrop');
 
 
 
@@ -94,6 +94,10 @@ popUp.addEventListener('keydown', (e) => {
   }
 });
 
+
+
+
+
 imgContent.addEventListener('click', (e) => {
   const img = e.target.closest('img');
   if (!img) return;
@@ -114,6 +118,8 @@ imgContent.addEventListener('keydown', (e) => {
     e.preventDefault();
   }
 });
+
+
 
 
 
@@ -143,6 +149,9 @@ document.addEventListener('keydown', (e) => {
     closePopUp();
   }
 });
+
+
+
 
 
 document.addEventListener('keydown', (e) => {
